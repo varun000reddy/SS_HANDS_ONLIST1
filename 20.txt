@@ -1,0 +1,24 @@
+/*
+============================================================================
+Name : 20.c
+Author : CHINTHA JOGGARI VARUN REDDY
+Description : 
+Write a program to find out the priority of your running program 
+and modify the priority with nice command.
+Date : 7th Sep, 2025
+============================================================================
+*/
+ps l -p pid
+top - NI nice value PR priority
+nice -n 10 ./2
+renice -n 15 -p pid
+
+/*
+============================================================================
+Sample Output:
+we will get pid of 2 and nice value using top
+and we change priority using renice
+
+============================================================================
+*/
+
