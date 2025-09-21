@@ -25,14 +25,25 @@ int main()
     sid=setsid();
     if(sid<0)
     exit(EXIT_FAILURE);
-    chdir("/");
-    freopen("/dev/null","r",stdin);
-    freopen("/dev/null","w",stdout);
-    freopen("/dev/null","w",stderr);
-    sleep(10);
-    system("/home/varun/hands_on1/script.sh");
-    exit(EXIT_SUCCESS);
+    int target_hour = 18;   // 24-hour format
+    int target_min  = 22;   // target minute
+
+    while (1) {
+        time_t now = time(NULL);
+        struct tm *t = localtime(&now);
+
+        if (t->tm_hour == target_hour && t->tm_min == target_min) {
+            system("./script.sh >> daemon.txt 2>&1");
+            sleep(1); // prevent multiple runs in same minute
+        }
+        sleep(5); // check every 5 seconds
+    }
+
+    return 0;
 }
+
+
+
 /*
 ============================================================================
 Sample Output:
