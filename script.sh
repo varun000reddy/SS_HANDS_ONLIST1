@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "daemon script" >>/home/sivani-reddy/practice/daemon.txt
+echo "daemon script by varun at $(date)" >>/home/varun/MT2025035/daemon.txt
